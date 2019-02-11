@@ -1,0 +1,19 @@
+<?php
+add_shortcode('emd_employee_photo', 'photo_shortcode_field');
+
+function photo_shortcode_field($atts){
+if (get_post_meta($post->ID, 'emd_employee_photo')) {
+	$sval = get_post_meta($post->ID, 'emd_employee_photo');
+	echo wp_get_attachment_url($sval[0]);
+}
+
+?>
+
+<div class="col-lg-2 col-sm-3 col-xs-6 person" style="padding:0;display:flex;flex-direction: column;">
+	<div class="person-thumb in center-block">
+		<a class="textMedium" href="<?php echo get_permalink(); ?>" title="<?php echo get_the_title(); ?>">
+		<div class="person-img img-circle" style="background-image:url([emd_employee_photo]);">
+		</div>
+		</a>
+	</div>
+</div>
